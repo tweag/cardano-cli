@@ -1949,6 +1949,7 @@ pKesVerificationKey =
   deserialiseVerKey str =
     case deserialiseFromBech32 (Text.pack str) of
       Right res -> Right res
+      Left err@(Bech32InvalidUtf8 _) -> Left $ displayError err
       -- The input was valid Bech32, but some other error occurred.
       Left err@(Bech32UnexpectedPrefix _ _) -> Left $ displayError err
       Left err@(Bech32UnexpectedHeader _ _) -> Left $ displayError err
@@ -2627,7 +2628,7 @@ pMultiHostName =
 
 pSingleHostName :: Parser StakePoolRelay
 pSingleHostName =
-  StakePoolRelayDnsARecord <$> pDNSName <*> optional pPort
+  StakePoolRelayDnsARecord <$> pDNSName <*> (Just <$> pPort)
  where
   pDNSName :: Parser ByteString
   pDNSName =

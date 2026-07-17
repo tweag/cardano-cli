@@ -19,7 +19,7 @@ Usage: cardano-cli compatible alonzo stake-pool registration-certificate
                                                                              [--pool-relay-ipv6 STRING]
                                                                              --pool-relay-port INT
                                                                            | --single-host-pool-relay STRING
-                                                                             [--pool-relay-port INT]
+                                                                             --pool-relay-port INT
                                                                            | --multi-host-pool-relay STRING
                                                                            ]
                                                                            [--metadata-url URL
@@ -29,6 +29,7 @@ Usage: cardano-cli compatible alonzo stake-pool registration-certificate
                                                                            | --testnet-magic NATURAL
                                                                            )
                                                                            --out-file FILEPATH
+                                                                           
 
   Create a stake pool registration certificate
 
