@@ -99,6 +99,7 @@ runStakePoolRegistrationCertificateCmd
               , Ping.pingOptsSRVPrefix = "_cardano._tcp"
               , Ping.pingOptsColor = Ping.ColorNever
               , Ping.pingOptsMode = Ping.TipMode
+              , Ping.pingOptsHashType = Ping.FullHash
               }
       pingErrs <- liftIO $ do
         stderr <- Ping.mkStdErrTracer
