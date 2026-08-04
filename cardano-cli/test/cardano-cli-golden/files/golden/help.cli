@@ -6149,6 +6149,7 @@ Usage: cardano-cli ping [-c|--count COUNT]
                           [--mode MODE]
                           [--srv-prefix SRV_PREFIX]
                           [--color COLOR]
+                          [--short-hash]
                           ADDRS
                           
 

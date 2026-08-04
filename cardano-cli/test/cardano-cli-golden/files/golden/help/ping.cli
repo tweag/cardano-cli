@@ -5,6 +5,7 @@ Usage: cardano-cli ping [-c|--count COUNT]
                           [--mode MODE]
                           [--srv-prefix SRV_PREFIX]
                           [--color COLOR]
+                          [--short-hash]
                           ADDRS
                           
 
@@ -25,6 +26,7 @@ Available options:
                            (default: "_cardano._tcp")
   --color COLOR            Colorized output: auto, never or always.
                            (default: auto)
+  --short-hash             show short tip's hash
   ADDRS                    List of IP/DNS/SRV address and ports or UNIX socket
                            paths, e.g. 127.0.0.1:3001 [::1]:3001
                            example.org:3001.
