@@ -2712,6 +2712,7 @@ Usage: cardano-cli conway stake-pool registration-certificate
                                                                   --pool-relay-port INT
                                                                 | --multi-host-pool-relay STRING
                                                                 ]
+                                                                [--validate-relays]
                                                                 [--metadata-url URL
                                                                   --metadata-hash HASH
                                                                   [--check-metadata-hash]]
@@ -3982,6 +3983,15 @@ Usage: cardano-cli dijkstra governance action create-protocol-parameters-update
                                                                                   [--max-ref-script-size-per-tx WORD32]
                                                                                   [--ref-script-cost-stride WORD32]
                                                                                   [--ref-script-cost-multiplier RATIONAL]
+                                                                                  [--leios-announcement-period-length MILLISECONDS]
+                                                                                  [--leios-vote-period-length MILLISECONDS]
+                                                                                  [--leios-diffusion-period-length MILLISECONDS]
+                                                                                  [--leios-committee-size WORD16]
+                                                                                  [--leios-quorum-stake-threshold RATIONAL]
+                                                                                  [--max-endorser-block-references-size WORD32]
+                                                                                  [--max-endorser-block-txs-size WORD32]
+                                                                                  [--max-endorser-block-execution-units (INT, INT)]
+                                                                                  [--max-ref-script-size-per-endorser-block WORD32]
                                                                                   [--cost-model-file FILE]
                                                                                   --out-file FILEPATH
                                                                                   
@@ -4662,7 +4672,10 @@ Usage: cardano-cli dijkstra query pool-state
                                                [--out-file FILEPATH]
                                                
 
-  Dump the pool state
+  Dump the pool state. For pools that have registered a BLS voting key, the
+  bksRegisteredIn epoch reported is the epoch the parameters take effect in
+  rather than the epoch the key was registered in, as the node does not expose
+  that value yet.
 
 Usage: cardano-cli dijkstra query proposals 
                                               [--cardano-mode
@@ -5211,6 +5224,7 @@ Usage: cardano-cli dijkstra stake-pool registration-certificate
                                                                     --pool-relay-port INT
                                                                   | --multi-host-pool-relay STRING
                                                                   ]
+                                                                  [--validate-relays]
                                                                   [--metadata-url URL
                                                                     --metadata-hash HASH
                                                                     [--check-metadata-hash]]
@@ -7647,6 +7661,7 @@ Usage: cardano-cli latest stake-pool registration-certificate
                                                                   --pool-relay-port INT
                                                                 | --multi-host-pool-relay STRING
                                                                 ]
+                                                                [--validate-relays]
                                                                 [--metadata-url URL
                                                                   --metadata-hash HASH
                                                                   [--check-metadata-hash]]
@@ -8528,13 +8543,14 @@ Usage: cardano-cli pretty-print-cbor --filepath FILEPATH
   Pretty print a CBOR file.
 
 Usage: cardano-cli ping [-c|--count COUNT]
-                          ((-h|--host HOST) | (-u|--unixsock SOCKET))
-                          [-p|--port PORT]
-                          [-m|--magic MAGIC]
+                          [-m|--network-magic MAGIC]
                           [-j|--json]
                           [-q|--quiet]
-                          [-Q|--query-versions]
-                          [-t|--tip]
+                          [--mode MODE]
+                          [--srv-prefix SRV_PREFIX]
+                          [--color COLOR]
+                          [--short-hash]
+                          ADDRS
                           
 
   Ping a cardano node either using node-to-node or node-to-client protocol. It negotiates a handshake and keeps sending keep alive messages.
@@ -8837,6 +8853,7 @@ Usage: cardano-cli compatible shelley stake-pool registration-certificate
                                                                               --pool-relay-port INT
                                                                             | --multi-host-pool-relay STRING
                                                                             ]
+                                                                            [--validate-relays]
                                                                             [--metadata-url URL
                                                                               --metadata-hash HASH
                                                                               [--check-metadata-hash]]
@@ -9062,6 +9079,7 @@ Usage: cardano-cli compatible allegra stake-pool registration-certificate
                                                                               --pool-relay-port INT
                                                                             | --multi-host-pool-relay STRING
                                                                             ]
+                                                                            [--validate-relays]
                                                                             [--metadata-url URL
                                                                               --metadata-hash HASH
                                                                               [--check-metadata-hash]]
@@ -9287,6 +9305,7 @@ Usage: cardano-cli compatible mary stake-pool registration-certificate
                                                                            --pool-relay-port INT
                                                                          | --multi-host-pool-relay STRING
                                                                          ]
+                                                                         [--validate-relays]
                                                                          [--metadata-url URL
                                                                            --metadata-hash HASH
                                                                            [--check-metadata-hash]]
@@ -9527,6 +9546,7 @@ Usage: cardano-cli compatible alonzo stake-pool registration-certificate
                                                                              --pool-relay-port INT
                                                                            | --multi-host-pool-relay STRING
                                                                            ]
+                                                                           [--validate-relays]
                                                                            [--metadata-url URL
                                                                              --metadata-hash HASH
                                                                              [--check-metadata-hash]]
@@ -9767,6 +9787,7 @@ Usage: cardano-cli compatible babbage stake-pool registration-certificate
                                                                               --pool-relay-port INT
                                                                             | --multi-host-pool-relay STRING
                                                                             ]
+                                                                            [--validate-relays]
                                                                             [--metadata-url URL
                                                                               --metadata-hash HASH
                                                                               [--check-metadata-hash]]
@@ -10390,6 +10411,7 @@ Usage: cardano-cli compatible conway stake-pool registration-certificate
                                                                              --pool-relay-port INT
                                                                            | --multi-host-pool-relay STRING
                                                                            ]
+                                                                           [--validate-relays]
                                                                            [--metadata-url URL
                                                                              --metadata-hash HASH
                                                                              [--check-metadata-hash]]
