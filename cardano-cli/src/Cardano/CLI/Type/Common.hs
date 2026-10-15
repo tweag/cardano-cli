@@ -111,7 +111,6 @@ import Cardano.Api.Ledger qualified as L
 
 import Cardano.Ledger.Api.State.Query qualified as L
 import Cardano.Ledger.Plutus.Language qualified as L
-import Cardano.Ledger.State qualified as L
 
 import Data.Aeson (object, pairs, (.=))
 import Data.Aeson qualified as Aeson
@@ -365,7 +364,7 @@ data AllOrOnly a = All | Only [a] deriving (Eq, Show)
 -- params are the current pool parameter settings, futureparams are new parameters, retiringEpoch is the
 -- epoch that has been set for pool retirement.  Any of these may be Nothing.
 data PoolParams era = PoolParams
-  { poolParameters :: Maybe L.StakePoolState
+  { poolParameters :: Maybe (L.StakePoolParams era)
   , futurePoolParameters :: Maybe (L.StakePoolParams era)
   -- ^ Staged changes, so these are parameters rather than state: they have no
   -- deposit, delegators or voting-key registration epoch until they take effect.
@@ -378,12 +377,12 @@ mkPoolStates
 mkPoolStates
   ( PoolState
       ( L.QueryPoolStateResult
-          { L.qpsrStakePools
+          { L.qpsrStakePoolParams
           , L.qpsrFutureStakePoolParams
           , L.qpsrRetiring
           }
         )
-    ) = (`Map.mapWithKey` qpsrStakePools) $ \kh sps ->
+    ) = (`Map.mapWithKey` qpsrStakePoolParams) $ \kh sps ->
     PoolParams
       { poolParameters = Just sps
       , futurePoolParameters = Map.lookup kh qpsrFutureStakePoolParams
