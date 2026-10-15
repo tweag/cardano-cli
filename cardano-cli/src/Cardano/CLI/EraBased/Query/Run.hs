@@ -1822,14 +1822,15 @@ runQuerySPOStakeDistribution
     serialisedPoolState <-
       fromExceptTCli $ runQuery nodeConnInfo target $ queryPoolState beo (Just poolIds)
 
-    PoolState poolStateResult <-
+    poolStateParamsResult <-
       fromEitherCli $ decodePoolState (convert eon) serialisedPoolState
 
     let spoToRewardCred :: Map (L.KeyHash L.StakePool) (L.Credential L.Staking)
         spoToRewardCred =
           Map.map
             (L.unAccountId . L.spsAccountId)
-            (L.qpsrStakePools poolStateResult)
+            undefined
+        --    (L.qpsrStakePoolParams undefined) --poolStateParamsResult)
 
         allRewardCreds :: Set StakeCredential
         allRewardCreds = Set.fromList $ map fromShelleyStakeCredential $ Map.elems spoToRewardCred
