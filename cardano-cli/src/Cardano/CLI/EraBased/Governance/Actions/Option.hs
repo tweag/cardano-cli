@@ -331,7 +331,7 @@ pIntroducedInDijkstraPParams =
     <*> convertToLedger id (optional pPerasTargetCommitteeSize)
     <*> convertToLedger id (optional pPerasBootstrapRound)
     <*> convertToLedger toUnitIntervalOrErr (optional pPerasQuorumThresholdSafetyMargin)
-    <*> convertToLedger id (optional pRefInputsCostPerMultiAssetPolicy)
+    <*> convertToLedger id (optional pRefInputsCostPerMultiAssetByte)
     <*> convertToLedger id (optional pRefInputsCostPerDatumByte)
 
 pLeiosAnnouncementPeriodLength :: Parser Milliseconds32
@@ -574,13 +574,13 @@ pPerasQuorumThresholdSafetyMargin =
       , Opt.help "Safety margin for the Peras quorum threshold."
       ]
 
-pRefInputsCostPerMultiAssetPolicy :: Parser L.Coin
-pRefInputsCostPerMultiAssetPolicy =
-  Opt.option (readerFromParsecParser parseLovelace) $
+pRefInputsCostPerMultiAssetByte :: Parser L.CoinPerByte
+pRefInputsCostPerMultiAssetByte =
+  Opt.option (readerFromParsecParser parseCoinPerByte) $
     mconcat
-      [ Opt.long "ref-inputs-cost-per-multi-asset-policy"
+      [ Opt.long "ref-inputs-cost-per-multi-asset-byte"
       , Opt.metavar "LOVELACE"
-      , Opt.help "Reference-input cost per multi-asset policy."
+      , Opt.help "Reference-input cost per multi-asset byte."
       ]
 
 pRefInputsCostPerDatumByte :: Parser L.CoinPerByte
