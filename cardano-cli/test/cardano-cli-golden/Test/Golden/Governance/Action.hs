@@ -638,7 +638,7 @@ hprop_golden_dijkstra_governance_action_create_protocol_parameters_update =
         , "--peras-quorum-threshold-safety-margin"
         , "1/20"
         , -- Reference-input costs
-          "--ref-inputs-cost-per-multi-asset-policy"
+          "--ref-inputs-cost-per-multi-asset-byte"
         , "1000010"
         , "--ref-inputs-cost-per-datum-byte"
         , "1000011"

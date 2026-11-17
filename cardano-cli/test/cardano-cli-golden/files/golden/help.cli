@@ -4005,7 +4005,7 @@ Usage: cardano-cli dijkstra governance action create-protocol-parameters-update
                                                                                   | --no-peras-bootstrap-round
                                                                                   ]
                                                                                   [--peras-quorum-threshold-safety-margin RATIONAL]
-                                                                                  [--ref-inputs-cost-per-multi-asset-policy LOVELACE]
+                                                                                  [--ref-inputs-cost-per-multi-asset-byte LOVELACE]
                                                                                   [--ref-inputs-cost-per-datum-byte LOVELACE]
                                                                                   [--cost-model-file FILE]
                                                                                   --out-file FILEPATH

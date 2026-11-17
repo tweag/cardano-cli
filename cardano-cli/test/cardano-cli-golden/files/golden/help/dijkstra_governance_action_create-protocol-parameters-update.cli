@@ -83,7 +83,7 @@ Usage: cardano-cli dijkstra governance action create-protocol-parameters-update
                                                                                   | --no-peras-bootstrap-round
                                                                                   ]
                                                                                   [--peras-quorum-threshold-safety-margin RATIONAL]
-                                                                                  [--ref-inputs-cost-per-multi-asset-policy LOVELACE]
+                                                                                  [--ref-inputs-cost-per-multi-asset-byte LOVELACE]
                                                                                   [--ref-inputs-cost-per-datum-byte LOVELACE]
                                                                                   [--cost-model-file FILE]
                                                                                   --out-file FILEPATH
@@ -288,8 +288,8 @@ Available options:
                            Unset the Peras bootstrap round.
   --peras-quorum-threshold-safety-margin RATIONAL
                            Safety margin for the Peras quorum threshold.
-  --ref-inputs-cost-per-multi-asset-policy LOVELACE
-                           Reference-input cost per multi-asset policy.
+  --ref-inputs-cost-per-multi-asset-byte LOVELACE
+                           Reference-input cost per multi-asset byte.
   --ref-inputs-cost-per-datum-byte LOVELACE
                            Reference-input cost per datum byte.
   --cost-model-file FILE   Filepath of the JSON formatted cost model
